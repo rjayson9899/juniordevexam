@@ -17,12 +17,19 @@ public class Store {
 
         do {
             System.out.print("\033[H\033[2J");  
-            System.out.flush();  
-            System.out.println("1. Display Inventory");
-            System.out.println("2. Add Product Quantity");
-            System.out.println("3. Enter Sales Transaction");
-            System.out.println("4. Display All Sales Transactions");
-            System.out.print("Enter your choice (0 to exit): ");
+            //System.out.flush();
+
+            System.out.println("Welcome to your POS system!");
+            System.out.println("---------------------------");
+            System.out.println("        Main Menu          ");
+            System.out.println("---------------------------");
+            System.out.println("1 - Display Inventory");
+            System.out.println("2 - Add Product Quantity");
+            System.out.println("3 - Enter Sales Transaction");
+            System.out.println("4 - Display All Sales Transactions");
+            System.out.println("0 - Exit");
+            System.out.println("-------------------------- ");
+            System.out.print("Your decision: ");
             op = in.nextInt();
             in.nextLine();
 
