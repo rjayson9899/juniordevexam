@@ -51,6 +51,14 @@ public class Product {
     }
 
     /*
+     * Fetch the current price of
+     * Product as output
+     */
+    public String getPrice() {
+        //Insert code here
+    }
+
+    /*
      * Fetch the total amount of
      * goods sold as output
      */
