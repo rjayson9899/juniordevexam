@@ -1,3 +1,5 @@
+import java.text.NumberFormat;
+
 public class Product {
     private String name;
     private int quantity;
@@ -46,7 +48,7 @@ public class Product {
      * Fetch the current amount of
      * quantity as output
      */
-    public String getStock() {
+    public int getStock() {
         //Insert code here
     }
 
@@ -54,7 +56,7 @@ public class Product {
      * Fetch the current price of
      * Product as output
      */
-    public String getPrice() {
+    public double getPrice() {
         //Insert code here
     }
 
@@ -71,7 +73,7 @@ public class Product {
      * of the product based on the 
      * amount sold and price
      */
-    public int getSale() {
+    public double getSale() {
         //Insert code here
     }
 }
