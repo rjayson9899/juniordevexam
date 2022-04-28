@@ -43,6 +43,14 @@ public class Product {
     }
 
     /*
+     * Fetch the current amount of
+     * quantity as output
+     */
+    public String getStock() {
+        //Insert code here
+    }
+
+    /*
      * Fetch the total amount of
      * goods sold as output
      */
