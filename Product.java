@@ -10,21 +10,24 @@ public class Product {
      * Constructor
      */
     public Product (String name, int quantity, double price) {
-        //Insert code here
+        this.name = name;
+        this.quantity = quantity;
+        this.price = price;//Insert code here
+        this.sold = 0;
     }
 
     /*
      * Code to display inventory
      */
     public void displayInv() {
-        //Insert code here
+        System.out.format("%-20s\t%20s\t%20s\n", this.name, this.quantity, this.price);//Insert code here
     }
 
     /*
      * Code to add quantity of inventory
      */
     public void addQuantity(int amount) {
-        //Insert code here
+        this.quantity += amount;//Insert code here
     }
 
     /*
@@ -33,7 +36,11 @@ public class Product {
      * goods sold
      */
     public double sellProduct(int amount) {
-        //Insert code here
+        double price = this.price;
+        this.quantity -= amount;
+        price *= quantity;
+        this.sold += amount;
+       return price;//Insert code here
     }
 
     /*
@@ -41,7 +48,7 @@ public class Product {
      * as output
      */
     public String getName() {
-        //Insert code here
+       return this.name; //Insert code here
     }
 
     /*
@@ -49,7 +56,7 @@ public class Product {
      * quantity as output
      */
     public int getStock() {
-        //Insert code here
+       return this.quantity; //Insert code here
     }
 
     /*
@@ -57,7 +64,7 @@ public class Product {
      * Product as output
      */
     public double getPrice() {
-        //Insert code here
+       return this.price; //Insert code here
     }
 
     /*
@@ -65,7 +72,7 @@ public class Product {
      * goods sold as output
      */
     public int getSold() {
-        //Insert code here
+        return this.sold;//Insert code here
     }
 
     /*
@@ -74,6 +81,8 @@ public class Product {
      * amount sold and price
      */
     public double getSale() {
-        //Insert code here
+        double sold = this.sold;
+        sold *= price;
+        return sold;//Insert code here
     }
 }
