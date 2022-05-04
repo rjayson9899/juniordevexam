@@ -2,16 +2,16 @@ import java.text.NumberFormat;
 
 public class Product {
     private String name;
-    private int quantity;
+    private int stock;
     private double price;
     private int sold;
 
     /*
      * Constructor
      */
-    public Product (String name, int quantity, double price) {
+    public Product (String name, int stock, double price) {
         this.name = name;
-        this.quantity = quantity;
+        this.stock = stock;
         this.price = price;
         this.sold = 0;
     }
@@ -21,25 +21,25 @@ public class Product {
      */
     public void displayInv() {
         NumberFormat money = NumberFormat.getCurrencyInstance();
-        System.out.format("%-20s\t%20s\t%20s\n", this.name, this.quantity, money.format(this.price));
+        System.out.format("%-20s\t%20s\t%20s\n", this.name, this.stock, money.format(this.price));
     }
 
     /*
-     * Code to add quantity of inventory
+     * Code to add stock of inventory
      */
-    public void addQuantity(int amount) {
-        this.quantity += amount;
+    public void addStock(int amount) {
+        this.stock += amount;
     }
 
     /*
-     * Deducts quantity based on input amount
+     * Deducts stock based on input amount
      * returns final price based on amount of
      * goods sold
      */
     public double sellProduct(int amount) {
         double price = this.price;
-        this.quantity -= amount;
-        price *= quantity;
+        this.stock -= amount;
+        price *= stock;
         this.sold += amount;
 
         return price;
@@ -55,10 +55,10 @@ public class Product {
 
     /*
      * Fetch the current amount of
-     * quantity as output
+     * stock as output
      */
     public int getStock() {
-       return this.quantity;
+       return this.stock;
     }
 
     /*

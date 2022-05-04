@@ -9,7 +9,7 @@ public class Store {
         Scanner in = new Scanner(System.in);
         NumberFormat money = NumberFormat.getCurrencyInstance();
         Product[] inventory = new Product[productNames.length];
-        int op, prodId, amount;
+        int oper, prodId, amount;
 
         for (int i = 0; i < productNames.length; i++) {
             inventory[i] = new Product(productNames[i], initialStock[i], price[i]);
@@ -24,27 +24,27 @@ public class Store {
             System.out.println("        Main Menu          ");
             System.out.println("---------------------------");
             System.out.println("1 - Display Inventory");
-            System.out.println("2 - Add Product Quantity");
+            System.out.println("2 - Add stock to product");
             System.out.println("3 - Enter Sales Transaction");
             System.out.println("4 - Display All Sales Transactions");
             System.out.println("0 - Exit");
             System.out.println("-------------------------- ");
             System.out.print("Your decision: ");
-            op = in.nextInt();
+            oper = in.nextInt();
             in.nextLine();
 
             System.out.println();
-            switch (op) {
+            switch (oper) {
                 case 1:
-                    System.out.println("Current Inventory");
-                    System.out.format("%-20s\t%-20s\t%-20s\n", "Product", "Stock", "Price");
+                    System.out.println("Current Inventory: ");
+                    System.out.format("%-20s\t%20s\t%20s\n", "Product", "Stock", "Price");
                     for (int i = 0; i < productNames.length; i++) {
                         inventory[i].displayInv();
                     }
                     break;
                 case 2:
                     for (int i = 0; i < productNames.length; i++) {
-                        System.out.format("%-2s. %-20s\n", (i + 1), inventory[i].getName());
+                        System.out.format("%-2s. %-10s - %6s\n", (i + 1), inventory[i].getName(), inventory[i].getStock());
                     }
 
                     System.out.print("Enter product number to increase quantity: ");
@@ -60,7 +60,7 @@ public class Store {
                         in.nextLine();
                         
                         if (amount > 0) {
-                            inventory[prodId].addQuantity(amount);
+                            inventory[prodId].addStock(amount);
                         } 
                         else {
                             System.out.println("Invalid input, returning to main menu...");
@@ -69,7 +69,7 @@ public class Store {
                     break;
                 case 3:
                     for (int i = 0; i < productNames.length; i++) {
-                        System.out.format("%-2s. %-20s\n", (i + 1), inventory[i].getName());
+                        System.out.format("%-2s. %-10s - %6s\n", (i + 1), inventory[i].getName(), inventory[i].getStock());
                     }
 
                     System.out.print("Enter product number to product to buy: ");
@@ -111,7 +111,7 @@ public class Store {
             }
             System.out.print("\nPress enter to continue...");
             in.nextLine();
-        } while(op != 0);
+        } while(oper != 0);
 
         in.close();
     }
