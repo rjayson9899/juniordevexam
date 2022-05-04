@@ -12,7 +12,7 @@ public class Product {
     public Product (String name, int quantity, double price) {
         this.name = name;
         this.quantity = quantity;
-        this.price = price;//Insert code here
+        this.price = price;
         this.sold = 0;
     }
 
@@ -20,14 +20,16 @@ public class Product {
      * Code to display inventory
      */
     public void displayInv() {
-        System.out.format("%-20s\t%20s\t%20s\n", this.name, this.quantity, this.price);//Insert code here
+        NumberFormat money = NumberFormat.getCurrencyInstance();
+
+        System.out.format("%-20s\t%20s\t%20s\n", this.name, this.quantity, money.format(this.price));//Insert code here
     }
 
     /*
      * Code to add quantity of inventory
      */
     public void addQuantity(int amount) {
-        this.quantity += amount;//Insert code here
+        this.quantity += amount;
     }
 
     /*
@@ -40,7 +42,8 @@ public class Product {
         this.quantity -= amount;
         price *= quantity;
         this.sold += amount;
-       return price;//Insert code here
+
+        return price;
     }
 
     /*
@@ -48,7 +51,7 @@ public class Product {
      * as output
      */
     public String getName() {
-       return this.name; //Insert code here
+       return this.name; 
     }
 
     /*
@@ -56,7 +59,7 @@ public class Product {
      * quantity as output
      */
     public int getStock() {
-       return this.quantity; //Insert code here
+       return this.quantity;
     }
 
     /*
@@ -64,7 +67,7 @@ public class Product {
      * Product as output
      */
     public double getPrice() {
-       return this.price; //Insert code here
+       return this.price; 
     }
 
     /*
@@ -72,7 +75,7 @@ public class Product {
      * goods sold as output
      */
     public int getSold() {
-        return this.sold;//Insert code here
+        return this.sold;
     }
 
     /*
@@ -83,6 +86,6 @@ public class Product {
     public double getSale() {
         double sold = this.sold;
         sold *= price;
-        return sold;//Insert code here
+        return sold;
     }
 }
