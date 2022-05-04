@@ -21,8 +21,7 @@ public class Product {
      */
     public void displayInv() {
         NumberFormat money = NumberFormat.getCurrencyInstance();
-
-        System.out.format("%-20s\t%20s\t%20s\n", this.name, this.quantity, money.format(this.price));//Insert code here
+        System.out.format("%-20s\t%20s\t%20s\n", this.name, this.quantity, money.format(this.price));
     }
 
     /*
