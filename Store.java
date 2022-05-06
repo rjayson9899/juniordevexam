@@ -35,7 +35,7 @@ public class Store {
             try {
                 oper = in.nextInt();
             } catch (Exception e) {
-                System.out.println("Invalid input!");
+                oper = -1;
             }
             
             in.nextLine();
@@ -93,6 +93,9 @@ public class Store {
                         if (amount > 0) {
                             inventory[prodId].addStock(amount);
                         } 
+                        else if(amount == 0){
+                            System.out.println("Returning to main menu...");
+                        }
                         else {
                             System.out.println("Invalid input, returning to main menu...");
                         }
@@ -135,6 +138,9 @@ public class Store {
                         if (amount > inventory[prodId].getStock()) {
                             System.out.println("Invalid input. Input must be less than or equal to current stock. Returning to main menu...");
                         } 
+                        else if(amount == 0){
+                            System.out.println("returning to main menu...");
+                        }
                         else if (amount < 0) {
                             System.out.println("Invalid input, returning to main menu...");
                         }
