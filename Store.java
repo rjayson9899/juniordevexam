@@ -9,7 +9,8 @@ public class Store {
         Scanner in = new Scanner(System.in);
         NumberFormat money = NumberFormat.getCurrencyInstance();
         Product[] inventory = new Product[productNames.length];
-        int oper, prodId, amount;
+        int oper = 7, prodId = 0, amount = 0 ;
+        boolean error = false;
 
         for (int i = 0; i < productNames.length; i++) {
             inventory[i] = new Product(productNames[i], initialStock[i], price[i]);
@@ -17,6 +18,7 @@ public class Store {
 
         do {
             System.out.print("\033[H\033[2J");  
+            oper = 7;
             //System.out.flush();
 
             System.out.println("Welcome to your POS system!");
@@ -30,7 +32,12 @@ public class Store {
             System.out.println("0 - Exit");
             System.out.println("-------------------------- ");
             System.out.print("Your decision: ");
-            oper = in.nextInt();
+            try {
+                oper = in.nextInt();
+            } catch (Exception e) {
+                oper = -1;
+            }
+            
             in.nextLine();
 
             System.out.println();
@@ -47,21 +54,48 @@ public class Store {
                         System.out.format("%-2s. %-10s - %6s\n", (i + 1), inventory[i].getName(), inventory[i].getStock());
                     }
 
-                    System.out.print("Enter product number to increase quantity: ");
-                    prodId = (in.nextInt() - 1);
+                    //System.out.print("Enter product number to increase quantity: ");
+                    do{
+                        
+                        try {
+                            System.out.print("Enter product number to increase quantity: ");
+                            prodId = (in.nextInt() - 1);
+                            error = false;
+                        } 
+                        catch (Exception e) {
+                            System.out.println("Invalid input!");
+                            in.next();
+                            error = true;
+                        }
+                    }while(error==true);
+                   
+                    
                     in.nextLine();
 
                     if (prodId > productNames.length || prodId < 0) {
                         System.out.println("Invalid input, returning to main menu...");
                     }
                     else {
-                        System.out.print("Enter quantity of " + inventory[prodId].getName() + " to increase by: ");
-                        amount = in.nextInt();
+                        do{
+                            try {
+                                System.out.print("Enter quantity of " + inventory[prodId].getName() + " to increase by: ");
+                                amount = in.nextInt();
+                                error = false;
+                            } catch (Exception e) {
+                                System.out.println("Invalid input!");
+                                in.next();
+                                error = true;
+                            }
+                        }while(error==true);
+                        
                         in.nextLine();
                         
                         if (amount > 0) {
                             inventory[prodId].addStock(amount);
                         } 
+                        else if(amount == 0){
+                            System.out.println("Returning to main menu...");
+                        }
                         else {
                             System.out.println("Invalid input, returning to main menu...");
                         }
@@ -71,22 +105,42 @@ public class Store {
                     for (int i = 0; i < productNames.length; i++) {
                         System.out.format("%-2s. %-10s - %6s\n", (i + 1), inventory[i].getName(), inventory[i].getStock());
                     }
-
-                    System.out.print("Enter product number to product to buy: ");
-                    prodId = (in.nextInt() - 1);
+                    do{
+                        try { 
+                            System.out.print("Enter product number to product to buy: ");
+                            prodId = (in.nextInt() - 1);
+                            error = false;
+                        } catch (Exception e) {
+                            System.out.println("Invalid input!");
+                            in.next();
+                            error = true;
+                        }
+                    }while(error == true);
                     in.nextLine();
 
                     if (prodId > productNames.length || prodId < 0) {
                         System.out.println("Invalid input, returning to main menu...");
                     }
                     else {
-                        System.out.print("Enter quantity of " + inventory[prodId].getName() + " to buy: ");
-                        amount = in.nextInt();
+                        do{
+                            try {
+                                System.out.print("Enter quantity of " + inventory[prodId].getName() + " to buy: ");
+                                amount = in.nextInt();
+                                error = false;
+                            } catch (Exception e) {
+                                System.out.println("Invalid input!");
+                                in.next();
+                                error = true;
+                            }
+                        }while(error == true);
                         in.nextLine();
                         
                         if (amount > inventory[prodId].getStock()) {
                             System.out.println("Invalid input. Input must be less than or equal to current stock. Returning to main menu...");
                         } 
+                        else if(amount == 0){
+                            System.out.println("returning to main menu...");
+                        }
                         else if (amount < 0) {
                             System.out.println("Invalid input, returning to main menu...");
                         }
